@@ -1,21 +1,48 @@
 import React from "react";
 import {
   View,
-  TouchableHighlight,
-  TouchableNativeFeedback,
   Text,
   Platform,
-  StyleSheet
+  StyleSheet,
+  TouchableHighlight,
+  TouchableNativeFeedback
 } from "react-native";
+
+export const Button = ({ onPress, children }) => {
+  const { button, text } = styles;
+  //IOS Button
+  if (Platform.OS === "ios") {
+    return (
+      <TouchableHighlight
+        onPress={onPress}
+        style={button}
+        underlayColor={"rgba(255,90,96,0.6)"}
+      >
+        <Text style={text}>{children}</Text>
+      </TouchableHighlight>
+    );
+  }
+  //Android Button
+  return (
+    <TouchableNativeFeedback
+      style={button}
+      onPress={onPress}
+      background={TouchableNativeFeedback.Ripple("rgba(255,90,96,0.6)")}
+    >
+      <Text style={text}>{children}</Text>
+    </TouchableNativeFeedback>
+  );
+};
 
 const styles = StyleSheet.create({
   button: {
+    //Optional border for the button
+    // borderColor: "#FFF",
+    // borderWidth: 1.25,
     paddingVertical: 15,
     paddingHorizontal: 25,
     backgroundColor: "#ce181e",
     borderRadius: 15,
-    borderColor: "#FFF",
-    borderWidth: 1.5,
     justifyContent: "center",
     alignItems: "center"
   },
@@ -27,31 +54,3 @@ const styles = StyleSheet.create({
     textShadowRadius: 10
   }
 });
-
-export const Button = ({ text, onPress }) => {
-  //IOS Button
-  if (Platform.OS === "ios") {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <TouchableHighlight
-          onPress={onPress}
-          style={styles.button}
-          underlayColor={"rgba(255,90,96,0.6)"}
-        >
-          <Text style={styles.text}>{text}</Text>
-        </TouchableHighlight>
-      </View>
-    );
-  }
-  //Android Button
-  return (
-    <TouchableNativeFeedback
-      onPress={onPress}
-      background={TouchableNativeFeedback.Ripple("rgba(255,90,96,0.6)")}
-    >
-      <View style={styles.button}>
-        <Text style={styles.text}>{text}</Text>
-      </View>
-    </TouchableNativeFeedback>
-  );
-};

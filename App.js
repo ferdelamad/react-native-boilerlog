@@ -7,7 +7,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>react-native-boilerlog</Text>
-        <Button text={"Click me"} onPress={() => console.log("click")} />
+        <Button onPress={() => console.log("click")}>Click me!!</Button>
       </View>
     );
   }
