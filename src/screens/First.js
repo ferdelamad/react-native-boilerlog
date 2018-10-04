@@ -1,29 +1,36 @@
 import React from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 import { Button } from "../common/Button";
-import { Image, View } from "react-native-animatable";
+import { Image } from "react-native-animatable";
 
 import logo from "../assets/logo-test.png";
 import metrics from "../assets/config";
-const IMAGE_WIDTH = metrics.DEVICE_WIDTH * 0.8;
+const IMAGE_WIDTH = metrics.DEVICE_WIDTH * 0.5;
 
 export default class First extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   handleTextRef = ref => (this.text = ref);
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <Image
           animation={"bounceIn"}
-          duration={1200}
+          duration={1500}
           delay={200}
           ref={ref => (this.logoImgRef = ref)}
           style={styles.logoImg}
           source={logo}
         />
-        <Text style={styles.welcome}>Screen 1</Text>
         <Button onPress={() => navigation.navigate("Second")}>
           Go to screen ONE
         </Button>
+        <Text style={{ flex: 1 }}>Test text</Text>
+        {/* <Text style={styles.welcome}>Screen 1</Text> */}
+        {/* <Text style={styles.welcome}>Screen 1</Text> */}
+        <Text style={{ flex: 1 }}>Test text</Text>
       </View>
     );
   }
@@ -37,20 +44,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5FCFF",
     width: metrics.DEVICE_WIDTH,
     height: metrics.DEVICE_HEIGHT,
-    paddingTop: 24
+    paddingTop: 20
   },
   logoImg: {
     flex: 1,
     height: null,
     width: IMAGE_WIDTH,
     alignSelf: "center",
-    resizeMode: "contain",
-    marginVertical: 30
+    resizeMode: "contain"
   },
   welcome: {
+    flex: 1,
     fontSize: 20,
-    textAlign: "center",
-    margin: 10,
+    margin: 1,
     color: "red"
   }
 });

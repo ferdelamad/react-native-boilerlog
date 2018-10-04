@@ -24,13 +24,15 @@ export const Button = ({ onPress, children }) => {
   }
   //Android Button
   return (
-    <TouchableNativeFeedback
-      style={button}
-      onPress={onPress}
-      background={TouchableNativeFeedback.Ripple("rgba(255,90,96,0.6)")}
-    >
-      <Text style={text}>{children}</Text>
-    </TouchableNativeFeedback>
+    <View style={{ flex: 1 }}>
+      <TouchableNativeFeedback
+        style={button}
+        onPress={onPress}
+        background={TouchableNativeFeedback.Ripple("rgba(255,90,96,0.6)")}
+      >
+        <Text style={text}>{children}</Text>
+      </TouchableNativeFeedback>
+    </View>
   );
 };
 
