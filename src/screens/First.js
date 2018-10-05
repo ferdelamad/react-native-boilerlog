@@ -26,7 +26,7 @@ export default class First extends React.Component {
             source={logo}
           />
         </View>
-        {/* <Button onPress={() => navigation.navigate("Second")}>Log In</Button> */}
+        <Button onPress={() => navigation.navigate("Test")}>Log In</Button>
         <Text style={styles.welcome}>Welcome Screen</Text>
         <Text style={styles.welcome}>Welcome Screen</Text>
         {/* <Button onPress={() => navigation.navigate("Second")}>Sign up!</Button> */}
