@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {
-  View,
   Image,
   Text,
   TextInput,
@@ -9,6 +8,8 @@ import {
   StatusBar,
   StyleSheet
 } from "react-native";
+
+import { View } from "react-native-animatable";
 
 // import { onSignIn } from "../auth";
 // import { styles } from "../styles/SignInStyle";
@@ -51,44 +52,66 @@ export default class Test extends Component {
           <Text style={title}>Creating events in a much cooler way.</Text>
         </View>
         <View style={formContainer}>
-          <TextInput
-            placeholder="John@email.com"
-            placeholderTextColor="rgba(255, 255, 255, 0.5)"
-            value={this.state.userName}
-            onChangeText={userName =>
-              this.setState({
-                userName
-              })
-            }
-            style={input}
-            returnKeyType="next"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            autoCorrect={false}
-          />
-          <TextInput
-            placeholder="password"
-            placeholderTextColor="rgba(255, 255, 255, 0.5)"
-            secureTextEntry
-            value={this.state.password}
-            onChangeText={password =>
-              this.setState({
-                password
-              })
-            }
-            style={input}
-            returnKeyType="go"
-          />
-
-          <TouchableOpacity
-            onPress={() => {
-              console.log("You pressed me");
-              // onSignIn().then(() => navigation.navigate("Screen2"));
-            }}
-            style={btnLog}
+          <View
+            animation={"bounceIn"}
+            duration={1500}
+            delay={200}
+            ref={ref => (this.textInput01 = ref)}
           >
-            <Text style={login}>LOG IN</Text>
-          </TouchableOpacity>
+            <TextInput
+              placeholder="John@email.com"
+              placeholderTextColor="rgba(255, 255, 255, 0.5)"
+              value={this.state.userName}
+              onChangeText={userName =>
+                this.setState({
+                  userName
+                })
+              }
+              style={input}
+              returnKeyType="next"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+          </View>
+          <View
+            animation={"bounceIn"}
+            duration={1500}
+            delay={300}
+            ref={ref => (this.textInput02 = ref)}
+          >
+            <TextInput
+              placeholder="password"
+              placeholderTextColor="rgba(255, 255, 255, 0.5)"
+              secureTextEntry
+              value={this.state.password}
+              onChangeText={password =>
+                this.setState({
+                  password
+                })
+              }
+              style={input}
+              returnKeyType="go"
+            />
+          </View>
+
+          <View
+            animation={"bounceIn"}
+            duration={1500}
+            delay={400}
+            ref={ref => (this.btnLog = ref)}
+          >
+            <TouchableOpacity
+              onPress={() => {
+                console.log("You pressed me");
+                // onSignIn().then(() => navigation.navigate("Screen2"));
+              }}
+              style={btnLog}
+            >
+              <Text style={login}>LOG IN</Text>
+            </TouchableOpacity>
+          </View>
+
           <Text style={{ color: "white" }}>{this.state.error}</Text>
           <Text style={{ color: "blue" }}>{this.state.success}</Text>
         </View>
