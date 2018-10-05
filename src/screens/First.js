@@ -16,21 +16,20 @@ export default class First extends React.Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Image
-          animation={"bounceIn"}
-          duration={1500}
-          delay={200}
-          ref={ref => (this.logoImgRef = ref)}
-          style={styles.logoImg}
-          source={logo}
-        />
-        <Button onPress={() => navigation.navigate("Second")}>
-          Go to screen ONE
-        </Button>
-        <Text style={{ flex: 1 }}>Test text</Text>
-        {/* <Text style={styles.welcome}>Screen 1</Text> */}
-        {/* <Text style={styles.welcome}>Screen 1</Text> */}
-        <Text style={{ flex: 1 }}>Test text</Text>
+        <View style={{ flexGrow: 1 }}>
+          <Image
+            animation={"bounceIn"}
+            duration={1500}
+            delay={200}
+            ref={ref => (this.logoImgRef = ref)}
+            style={styles.logoImg}
+            source={logo}
+          />
+        </View>
+        {/* <Button onPress={() => navigation.navigate("Second")}>Log In</Button> */}
+        <Text style={styles.welcome}>Welcome Screen</Text>
+        <Text style={styles.welcome}>Welcome Screen</Text>
+        {/* <Button onPress={() => navigation.navigate("Second")}>Sign up!</Button> */}
       </View>
     );
   }
@@ -47,16 +46,13 @@ const styles = StyleSheet.create({
     paddingTop: 20
   },
   logoImg: {
-    flex: 1,
     height: null,
     width: IMAGE_WIDTH,
     alignSelf: "center",
     resizeMode: "contain"
   },
   welcome: {
-    flex: 1,
     fontSize: 20,
-    margin: 1,
     color: "red"
   }
 });

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  View,
   Text,
   Platform,
   StyleSheet,
@@ -8,18 +7,27 @@ import {
   TouchableNativeFeedback
 } from "react-native";
 
+import { View } from "react-native-animatable";
+
 export const Button = ({ onPress, children }) => {
   const { button, text } = styles;
   //IOS Button
   if (Platform.OS === "ios") {
     return (
-      <TouchableHighlight
-        onPress={onPress}
-        style={button}
-        underlayColor={"rgba(255,90,96,0.6)"}
+      <View
+        ref={ref => (this.buttonRef = ref)}
+        animation={"bounceIn"}
+        duration={600}
+        delay={400}
       >
-        <Text style={text}>{children}</Text>
-      </TouchableHighlight>
+        <TouchableHighlight
+          onPress={onPress}
+          style={button}
+          underlayColor={"rgba(255,90,96,0.6)"}
+        >
+          <Text style={text}>{children}</Text>
+        </TouchableHighlight>
+      </View>
     );
   }
   //Android Button
